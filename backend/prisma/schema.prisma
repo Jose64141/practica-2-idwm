@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum InterestType {
+  PRO
+  HOBBY
+}
+
+enum ProductType {
+  PIZZA
+  SIDE
+  CUSTOM
+}
+
+enum OrderType {
+  DELIVERY
+  PICKUP
+}
+
+model User {
+  id          Int        @id @default(autoincrement())
+  email       String     @unique
+  name        String
+  lastName    String
+  age         Int
+  city        String
+  country     String
+  linkedInUrl String
+  summary     String
+  interests   Interest[]
+  skills      Skill[]
+  imageUrl    String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Interest {
+  id          Int          @id @default(autoincrement())
+  name        String
+  type        InterestType
+  user        User         @relation(fields: [userId], references: [id])
+  userId      Int
+  isAvailable Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Skill {
+  id        Int        @id @default(autoincrement())
+  name      String
+  level     Float
+  user      User       @relation(fields: [userId], references: [id])
+  userId    Int
+  group     SkillGroup @relation(fields: [groupId], references: [id])
+  groupId   Int
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model SkillGroup {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  skills    Skill[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

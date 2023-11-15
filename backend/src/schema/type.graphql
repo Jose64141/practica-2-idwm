@@ -1,0 +1,31 @@
+type Interest {
+    name: String,
+    type: String,
+    user: User,
+}
+
+type Skill {
+    name: String,
+    level: Float,
+    group: String,
+    user: User
+}
+
+type User {
+    id: Int!,
+    name: String,
+    lastName: String,
+    email: String,
+    age: Int,
+    city: String,
+    country: String,
+    linkedInUrl: String,
+    summary: String,
+    interests: [Interest],
+    skills: [Skill],
+    imageUrl: String,
+}
+
+extend type Query {
+    profile(email: String!): User
+}
