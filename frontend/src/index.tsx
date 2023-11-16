@@ -4,14 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from "react-router";
-import ProfilePage from "./ProfilePage";
+import PortfolioPage from "./PortfolioPage";
 import { createBrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const router = createBrowserRouter([
   {path: '/', element: <App/>},
-  {path: '/profile', element: <ProfilePage />}
+  {path: '/portfolio', element: <PortfolioPage />}
 ]);
 
 const client = new ApolloClient({

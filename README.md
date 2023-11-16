@@ -41,4 +41,4 @@ Para correr el servidor, se debe ejecutar el siguiente comando en la carpeta `fr
 
 ### `npm start`
 
-Se ejecutará en [http://localhost:3000/profile](http://localhost:3000/profile).
+Se ejecutará en [http://localhost:3000/portfolio](http://localhost:3000/portfolio).

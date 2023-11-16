@@ -32,7 +32,7 @@ const GET_PROFILE = gql`
 
 `;
 
-export default function ProfilePage() {
+export default function PortfolioPage() {
   const { loading, error, data } = useQuery(GET_PROFILE);
   if(loading) return <p>Loading...</p>;
   if(error) return <p>Error :(</p>;
